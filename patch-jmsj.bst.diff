@@ -1,0 +1,33 @@
+--- jmsj.bst.orig	2010-04-20 19:46:41.000000000 +0900
++++ jmsj.bst	2014-10-06 12:40:57.000000000 +0900
+@@ -289,10 +289,9 @@
+ FUNCTION {output.bibitem}
+ { newline$
+ 
+-  "\bibitem[\protect\citeauthoryear{" write$
+-  label1 write$
+-  "}{" write$
++  "\bibitem[{" write$
+   label2 write$
++  label1 write$
+   "}]{" write$
+ 
+   cite$ write$
+@@ -1432,7 +1431,7 @@
+   grab.author.editor.key my.full.label  % generate the first-citation info
+ 
+   'label1 :=
+-  "}{" *
++  "(" *
+ %  year field.or.null purify$ #-1 #4 substring$ *  
+ % msl 12/94 - allow year specifications for translations like `1906/1966'
+   year field.or.null *  
+@@ -1582,7 +1581,7 @@
+     { "a" 'extra.label := }
+      'skip$
+   if$
+-  label2 "}{" * extra.label * 'label2 :=   
++  label2 ")" * extra.label * 'label2 :=   
+   extra.label 'next.extra :=
+ }
+ 
